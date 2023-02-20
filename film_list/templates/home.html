@@ -1,0 +1,31 @@
+<h3>Film list</h3>
+
+<form method="POST" action="/">
+    {% csrf_token %}
+    <p>Назва Фільму</p>
+    {{form.name}}
+    <p>Рік Випуску</p>
+    {{form.year}}
+    <p>Ім'я Та Прізвище Режисера</p>
+    {{form.creator}}<br/>
+
+    <input type="submit" name="Add Film">
+</form>
+
+{% for Film in films %}
+    <div>
+        <td>
+
+            <a href="{% url 'edit_film' Film.id %}">Edit</a>
+            <a href="{% url 'delete' Film.id %}">Delete</a>
+            <p>{{Film}}</p><br/>
+        </td>
+    </div>
+{% endfor %}
+
+
+
+
+
+
+
